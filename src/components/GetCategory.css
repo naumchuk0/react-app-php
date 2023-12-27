@@ -1,0 +1,12 @@
+#main {
+    padding: 10px;
+    margin: 10px;
+}
+
+th {
+    width: 100px;
+}
+
+td {
+    text-align: center;
+}
