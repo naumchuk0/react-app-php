@@ -52,7 +52,8 @@ const CategoriesListPage : React.FC = () => {
     return (
         <>
             <h1>Categories List</h1>
-            <Table dataSource={list} rowKey={"id"} columns={columns} size={"middle"} />;
+            <Table dataSource={list} rowKey={"id"} columns={columns} size={"middle"} />
+            {/* Також не зрозуміло як мені додавати кнопки в цю табличку (я про edit/delete, щоб можна було зразу взаємодіяти з певним елементом) */}
         </>
     )
 }

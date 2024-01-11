@@ -4,17 +4,16 @@ import {useState} from "react";
 import {LoadingOutlined, PlusOutlined} from '@ant-design/icons';
 import type {UploadChangeParam} from 'antd/es/upload';
 import type {RcFile, UploadFile, UploadProps} from 'antd/es/upload/interface';
-import {ICategoryCreate} from "./types.ts";
 import http_common from "../../../http_common.ts";
 import React from "react";
+import { IEditCategory } from "./types.ts";
 
-const CategoryCreatePage = () => {
+const CategoryEditPage = () => {
 
     const navigate = useNavigate();
     const [file, setFile] = useState<File | null>(null);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [loading, setLoading] = useState(false);
-
 
     const onFinish = async (values: any) => {
         console.log('Success:', values);
@@ -23,12 +22,13 @@ const CategoryCreatePage = () => {
             setErrorMessage("Set image!");
             return;
         }
-        const model : ICategoryCreate = {
+        const model : IEditCategory = {
+            id: values.firstName,
             name: values.name,
-            image: file
-        };
+            image: file,
+        }
         try {
-            await http_common.post("/api/categories/create", model,{
+            await http_common.post("/api/categories/edit/" + model.id, model,{
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -87,10 +87,9 @@ const CategoryCreatePage = () => {
         console.log("is select", isImage && isLt2M);
         return isImage && isLt2M;
     };
-
     return (
         <>
-            <Divider style={customDividerStyle}>Add Category</Divider>
+             <Divider style={customDividerStyle}>Edit Category</Divider>
             {errorMessage && <Alert message={errorMessage} style={{marginBottom: "20px"}} type="error" />}
             <Form
                 name="basic"
@@ -100,6 +99,14 @@ const CategoryCreatePage = () => {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
+                <Form.Item<FieldType>
+                    label="Id"
+                    name="firstName" //Підкреслює, але працює, чому?
+                    rules={[{required: true, message: 'Enter category Id!'}]}
+                >
+                    <Input/>
+                </Form.Item>
+
                 <Form.Item<FieldType>
                     label="Name"
                     name="name"
@@ -124,12 +131,12 @@ const CategoryCreatePage = () => {
 
                 <Form.Item wrapperCol={{offset: 8, span: 16}}>
                     <Button type="primary" htmlType="submit">
-                        Add
+                        Edit
                     </Button>
                 </Form.Item>
             </Form>
         </>
-    );
+    )
 }
 
-export default CategoryCreatePage;
+export default CategoryEditPage;
