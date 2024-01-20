@@ -42,6 +42,10 @@ const ContainerDefault: React.FC = () => {
                             key: '4',
                             label: <Link to={"/edit"}>Edit</Link>,
                         },
+                        {
+                            key: '5',
+                            label: <Link to={"/register"}>Registration</Link>,
+                        },
                     ]}
                 />
             </Sider>
