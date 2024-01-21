@@ -7,6 +7,8 @@ import CategoryCreatePage from "./components/categories/create/CategoryCreatePag
 import CategoryDeletePage from './components/categories/delete/CategoryDeletePage.tsx';
 import CategoryEditPage from './components/categories/edit/CategoryEditPage.tsx';
 import RegisterPage from './components/auth/register/RegisterPage.tsx';
+import ProductsListPage from './components/product/list/ProductsListPage.tsx';
+import ProductCreatePage from './components/product/create/ProductCreatePage.tsx';
 
 
 const App: React.FC = () => {
@@ -18,6 +20,8 @@ const App: React.FC = () => {
                 <Route path={"delete"} element={<CategoryDeletePage />} />
                 <Route path={"edit"} element={<CategoryEditPage />} />
                 <Route path={"register"} element={<RegisterPage />} />
+                <Route path={"product"} element={<ProductsListPage />} />
+                <Route path={"product/create"} element={<ProductCreatePage />} />
                 <Route path="*" element={<NoMatch />} />
             </Route>
         </Routes>

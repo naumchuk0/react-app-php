@@ -63,7 +63,7 @@ const RegisterPage = () => {
 
     return (
         <>
-            <Divider style={customDividerStyle}>Реєстрація</Divider>
+            <Divider style={customDividerStyle}>Registration</Divider>
             {errorMessage && <Alert message={errorMessage} style={{marginBottom: "20px"}} type="error" />}
             <Form
                 name="basic"
@@ -74,34 +74,34 @@ const RegisterPage = () => {
                 autoComplete="off"
             >
                 <Form.Item
-                    label="Ім'я"
+                    label="Name"
                     name="name"
-                    rules={[{required: true, message: "Вкажіть ім'я!"}]}
+                    rules={[{required: true, message: "Enter Name!"}]}
                 >
                     <Input/>
                 </Form.Item>
                 <Form.Item
-                    label="Прізвище"
+                    label="Last Name"
                     name="lastName"
-                    rules={[{required: true, message: "Вкажіть прізвище!"}]}
+                    rules={[{required: true, message: "Enter Last Name!"}]}
                 >
                     <Input/>
                 </Form.Item>
 
                 <Form.Item
-                    label="Телефон"
+                    label="Phone"
                     name="phone"
                     htmlFor="phone"
                     rules={[
                         {required: true, message: 'Це поле є обов\'язковим!'},
-                        {min: 11, message: 'Телефон повинна містити мінімум 11 символи!'}
+                        {min: 11, message: 'Phone number must be minimum 11 lenght'}
                     ]}
                 >
                     <Input autoComplete="phone" id={"phone"}/>
                 </Form.Item>
 
                 <Form.Item
-                    label="Фото"
+                    label="Photo"
                     name="image"
                     getValueFromEvent={imageConverter}
                 >
@@ -117,14 +117,14 @@ const RegisterPage = () => {
                             (
                                 <div>
                                     <PlusOutlined/>
-                                    <div style={{marginTop: 8}}>Обрати фото</div>
+                                    <div style={{marginTop: 8}}>Choose a photo</div>
                                 </div>)
                         }
                     </Upload>
                 </Form.Item>
 
                 <Form.Item
-                    label="Електронна пошта"
+                    label="Email"
                     name="email"
                     htmlFor="email"
                     rules={[
@@ -154,14 +154,14 @@ const RegisterPage = () => {
 
                 <Form.Item
                     name="confirm"
-                    label="Повторіть Пароль"
+                    label="Confirm password"
                     htmlFor={"confirm"}
                     dependencies={['password']}
                     hasFeedback
                     rules={[
                         {
                             required: true,
-                            message: 'Будь-ласка підтвердіть пароль!',
+                            message: 'Confirm Password!',
                         },
                         ({getFieldValue}) => ({
                             validator(_, value) {
